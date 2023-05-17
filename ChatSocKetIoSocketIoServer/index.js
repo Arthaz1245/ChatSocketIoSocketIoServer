@@ -23,15 +23,9 @@ io.on("connection", (socket) => {
     const user = onlineUsers.find(
       (user) => user.userId === message.recipientId
     );
-    const sender = onlineUsers.find((user) => user.userId === message.senderId);
-    console.log(message);
-    console.log("user target", user);
-    console.log("user target", sender);
+
     if (user) {
       io.to(user.socketId).emit("getMessage", message);
-      io.to(sender?.socketId).emit("getMessage", message);
-    } else {
-      io.emit("getMessage", message);
     }
   });
   socket.on("disconnect", () => {
