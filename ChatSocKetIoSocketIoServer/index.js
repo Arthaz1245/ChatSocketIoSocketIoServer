@@ -2,7 +2,8 @@ const { Server } = require("socket.io");
 //connect with client
 
 const io = new Server({
-  cors: "http://localhost:5173",
+  //cors: "http://localhost:5173",
+  cors: "https://chat-socket-io-front-tau.vercel.app",
 });
 let onlineUsers = [];
 io.on("connection", (socket) => {
